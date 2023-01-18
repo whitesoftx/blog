@@ -1,5 +1,5 @@
-//jshint esversion:6
 
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 // mongoose.connect("mongodb://127.0.0.1:27017/blogDB", {useNewUrlParser: true});
 
-mongoose.connect("mongodb+srv://whitesoftx:Xchange75us@cluster0.zog3eqp.mongodb.net/blogDB", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 
 const postSchema = {
   title: String,
