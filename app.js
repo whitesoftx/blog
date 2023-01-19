@@ -18,7 +18,10 @@ app.use(express.static("public"));
 
 // mongoose.connect("mongodb://127.0.0.1:27017/blogDB", {useNewUrlParser: true});
 
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
+mongoose.set('strictQuery', false);
+// mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.zog3eqp.mongodb.net/blogDB`;
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const postSchema = {
   title: String,
